@@ -1,0 +1,44 @@
+activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+<Spinner
+android:id="@+id/spinner1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content" />
+</RelativeLayout>
+
+
+MainActivity.java
+
+package com.example.program7;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+public class MainActivity extends Activity implements OnItemSelectedListener {
+String[] countries={"India","Japan","USA","China","Russia"};
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+Spinner spin = (Spinner) findViewById(R.id.spinner1);
+spin.setOnItemSelectedListener(this);
+ArrayAdapter a = new ArrayAdapter(this,android.R.layout.simple_spinner_item,countries);
+a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+spin.setAdapter(a);
+}
+public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long id) {
+Toast.makeText(getApplicationContext(), countries[position],
+Toast.LENGTH_LONG).show();
+}
+public void onNothingSelected(AdapterView<?> arg0) {
+}
+}

@@ -1,0 +1,47 @@
+activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+<ListView
+android:id="@+id/listView1"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"" >
+</ListView>
+</RelativeLayout>
+
+
+single_item.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/label"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:padding="10dip"
+android:textSize="16dip"
+android:textStyle="bold" >
+</TextView>
+
+
+MainActivity.java
+
+package com.example.program13;
+import android.os.Bundle;
+import android.app.Activity;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+public class MainActivity extends Activity {
+String[] companies = {"Google","Apple","Microsoft","Nokia",
+"Mahindra","Tata","Samsung","Deloitte","Zoho","Amazon"};
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+ArrayAdapter adapter = new ArrayAdapter<String>(this,
+R.layout.single_item, companies);
+ListView listView = (ListView) findViewById(R.id.listView1);
+listView.setAdapter(adapter);
+}

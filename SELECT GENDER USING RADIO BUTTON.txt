@@ -1,0 +1,72 @@
+activity_main.xml
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+<RadioGroup
+android:id="@+id/radioGroup1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content" >
+<RadioButton
+android:id="@+id/radio0"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:checked="true"
+android:text="Male" />
+<RadioButton
+android:id="@+id/radio1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Female" />
+<RadioButton
+android:id="@+id/radio2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Non Binary" />
+</RadioGroup>
+<Button
+android:id="@+id/button1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="submit"
+android:text="Submit" />
+</RelativeLayout>
+
+
+MainActivity.java
+
+package com.example.program6;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.Toast;
+public class MainActivity extends Activity {
+RadioButton r1,r2,r3;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+r1=(RadioButton)findViewById(R.id.radio0);
+r2=(RadioButton)findViewById(R.id.radio1);
+r3=(RadioButton)findViewById(R.id.radio2);
+}
+public void submit(View v)
+{
+if(r1.isChecked()==true)
+{
+Toast.makeText(this, "Male", Toast.LENGTH_LONG).show();
+}
+else if(r2.isChecked()==true)
+{
+Toast.makeText(this, "Female", Toast.LENGTH_LONG).show();
+}
+else
+{
+Toast.makeText(this, "Non Binary", Toast.LENGTH_LONG).show();
+}
+}
+}

@@ -1,0 +1,67 @@
+activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingBottom="@dimen/activity_vertical_margin"
+android:paddingLeft="@dimen/activity_horizontal_margin"
+android:paddingRight="@dimen/activity_horizontal_margin"
+android:paddingTop="@dimen/activity_vertical_margin"
+tools:context=".MainActivity" >
+<EditText
+android:id="@+id/editText1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="Username" >
+<requestFocus />
+</EditText>
+<EditText
+android:id="@+id/editText2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="Password"
+android:inputType="textPassword" />
+<Button
+android:id="@+id/button1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="login"
+android:text="Login" />
+</RelativeLayout>
+
+
+MainActivity.java
+
+package com.example.program21;
+import com.example.program21.R.id;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+public class MainActivity extends Activity {
+EditText username,password;
+String uname,pwd;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+username=(EditText)findViewById(R.id.editText1);
+password=(EditText)findViewById(R.id.editText2);
+}
+public void login(View v)
+{
+uname=username.getText().toString();
+pwd=password.getText().toString();
+if(uname.length()<5 || pwd.length()<5)
+Toast.makeText(this, "Username and/or Password too short",
+Toast.LENGTH_LONG).show();
+if(uname.equals("admin") || pwd.equals("Admin@123"))
+Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show();
+else
+if(uname.length()<5 || pwd.length()<5)
+Toast.makeText(this, "Recheck the credentials",
+Toast.LENGTH_LONG).show();
+}
+}

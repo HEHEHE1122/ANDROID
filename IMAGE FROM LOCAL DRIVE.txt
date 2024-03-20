@@ -1,0 +1,56 @@
+activity_main.xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+<ImageView
+android:id="@+id/imageView1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:src="@drawable/ic_launcher" />
+<Button
+android:id="@+id/button1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="india"
+android:text="India" />
+<Button
+android:id="@+id/button2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="bhutan"
+android:text="Bhutan" />
+<Button
+android:id="@+id/button3"
+android:onClick="japan"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Japan" />
+</RelativeLayout>
+MainActivity.java
+package com.example.program12;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.widget.ImageView;
+public class MainActivity extends Activity {
+ImageView i;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+i=(ImageView)findViewById(R.id.imageView1);
+}
+public void india(View v)
+{
+i.setImageResource(R.drawable.india);
+}
+public void bhutan(View v)
+{
+i.setImageResource(R.drawable.bhutan);
+}
+public void japan(View v)
+{ i.setImageResource(R.drawable.japan);
+ }
+}

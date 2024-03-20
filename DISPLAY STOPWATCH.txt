@@ -1,0 +1,92 @@
+activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+<TextView
+android:id="@+id/textView1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textSize="50dp"
+android:text="00:00:00" />
+<Button
+android:id="@+id/button3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="stop"
+android:text="Stop" />
+<Button
+android:id="@+id/button2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="reset"
+android:text="Reset" />
+<Button
+android:id="@+id/button1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="start"
+android:text="Start" />
+</RelativeLayout>
+
+
+MainActivity.java
+
+package com.example.program8;
+import java.util.Locale;
+import android.os.Bundle;
+import android.os.Handler;
+import android.app.Activity;
+import android.view.View;
+import android.widget.TextView;
+public class MainActivity extends Activity {
+TextView t;
+int running=0;
+int seconds=0;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+t=(TextView)findViewById(R.id.textView1);
+stopwatch();
+}
+public void start(View v)
+{
+running =1;
+}
+public void stopwatch()
+{
+final Handler handler
+= new Handler();
+handler.post(new Runnable() {
+@Override
+public void run()
+{
+int hours = seconds / 3600;
+int minutes = (seconds % 3600) / 60;
+int secs = seconds % 60;
+String time
+= String
+.format(Locale.getDefault(),
+"%02d:%02d:%02d", hours,
+minutes, secs);
+t.setText(time);
+if (running==1) {
+seconds++;
+}
+handler.postDelayed(this, 1000);
+}
+});
+}
+public void stop(View v)
+{
+running=0;
+}
+public void reset(View v)
+{
+running=0;
+seconds=0;
+}
+}

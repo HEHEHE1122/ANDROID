@@ -1,0 +1,54 @@
+activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+<EditText
+android:id="@+id/editText1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="Enter a Number" >
+<requestFocus />
+</EditText>
+<TextView
+android:id="@+id/textView1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="MULTIPLICATION TABLE:" />
+<Button
+android:id="@+id/button1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="fun"
+android:text="View" />
+</RelativeLayout>
+
+
+MainActivity.java
+
+package com.example.program15;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+public class MainActivity extends Activity {
+EditText e;
+int i,n;
+TextView t;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+t=(TextView)findViewById(R.id.textView1);
+e=(EditText)findViewById(R.id.editText1);
+}
+public void fun(View v)
+{
+n=Integer.parseInt(e.getText().toString());
+for(i=0;i<=10;i++)
+t.setText(t.getText().toString()+"\n"+n+" * "+i+" = "+(i*n));
+}
+}

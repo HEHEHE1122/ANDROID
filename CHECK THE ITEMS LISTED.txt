@@ -1,0 +1,76 @@
+activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+<CheckBox
+android:id="@+id/checkBox1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="English" />
+<Button
+android:id="@+id/button1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="submit"
+android:text="Submit" />
+<CheckBox
+android:id="@+id/checkBox2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Hindi" />
+<CheckBox
+android:id="@+id/checkBox3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Malayalam" />
+<CheckBox
+android:id="@+id/checkBox4"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Tamil" />
+<TextView
+android:id="@+id/textView1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Selected languages are:" />
+</RelativeLayout>
+
+
+MainActivity.java
+
+package com.example.program9;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
+public class MainActivity extends Activity {
+CheckBox c1,c2,c3,c4;
+TextView t;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+c1=(CheckBox)findViewById(R.id.checkBox1);
+c2=(CheckBox)findViewById(R.id.checkBox2);
+c3=(CheckBox)findViewById(R.id.checkBox3);
+c4=(CheckBox)findViewById(R.id.checkBox4);
+t=(TextView)findViewById(R.id.textView1);
+}
+public void submit(View v)
+{
+String selected="Languages selected are:";
+if(c1.isChecked()==true)
+selected=selected+"\nEnglish";
+if(c2.isChecked()==true)
+selected=selected+"\nHindi";
+if(c3.isChecked()==true)
+selected=selected+"\nMalayalam";
+if(c4.isChecked()==true)
+selected=selected+"\nTamil";
+t.setText(selected);
+}
+}
