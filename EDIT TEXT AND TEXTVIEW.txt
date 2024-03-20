@@ -1,0 +1,54 @@
+activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+<TextView
+android:id="@+id/textView1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Your Message is Displayed here...." />
+<EditText
+android:id="@+id/editText1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="Enter a message"
+>
+<requestFocus />
+</EditText>
+<Button
+android:id="@+id/button1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="submit"
+android:text="Submit" />
+</RelativeLayout>
+
+
+
+MainActivity.java
+
+package com.example.program14;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+public class MainActivity extends Activity {
+EditText e;
+TextView t;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+e=(EditText)findViewById(R.id.editText1);
+t=(TextView)findViewById(R.id.textView1);
+}
+public void submit(View v)
+{
+String message=e.getText().toString();
+t.setText(message);
+}
+}
