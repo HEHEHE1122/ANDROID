@@ -1,0 +1,54 @@
+activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+<EditText
+android:id="@+id/editText1"
+android:layout_width="wrap_content"
+android:hint="Enter First Number"
+android:layout_height="wrap_content" >
+<requestFocus />
+</EditText>
+<EditText
+android:id="@+id/editText2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="Enter Second Number"
+android:ems="10" />
+<Button
+android:id="@+id/button1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="sum"
+android:text="Add" />
+</RelativeLayout>
+
+MainActivity.java
+
+package com.example.program2;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+import android.app.Activity;
+public class MainActivity extends Activity {
+EditText e1,e2;
+int num1,num2,sum;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+e1=(EditText)findViewById(R.id.editText1);
+e2=(EditText)findViewById(R.id.editText2);
+}
+public void sum(View v)
+{
+num1=Integer.parseInt(e1.getText().toString());
+num2=Integer.parseInt(e2.getText().toString());
+sum=num1+num2;
+Toast.makeText(this, "Sum is: "+sum, Toast.LENGTH_LONG).show();
+}
+}

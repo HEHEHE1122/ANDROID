@@ -1,0 +1,49 @@
+activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+</RelativeLayout>
+
+
+menu > main.xml
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<item android:id="@+id/item1"
+android:title="Login"></item>
+<item android:id="@+id/item2"
+android:title="Rating"></item>
+<item android:id="@+id/item3"
+android:title="Exit"></item>
+</menu>
+
+
+
+MainActivity.java
+
+package com.example.program5;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+public class MainActivity extends Activity {
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+}
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+getMenuInflater().inflate(R.menu.main, menu);
+return true;
+}
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT)
+.show();
+return true;
+}
+}
